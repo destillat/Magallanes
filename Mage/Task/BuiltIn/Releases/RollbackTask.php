@@ -140,7 +140,7 @@ class RollbackTask extends AbstractTask implements IsReleaseAware
                     if ($resultFetch && $userGroup) {
                         $command .= " && chown -h {$userGroup} ${tmplink}";
                     }
-                    $command .= " && mv -T {$tmplink} {$symlink}";
+                    $command .= " && rm {$symlink} && mv {$tmplink} {$symlink}";
 
                     $result = $this->runCommandRemote($command);
 
